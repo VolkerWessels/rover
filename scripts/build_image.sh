@@ -91,6 +91,13 @@ function build_base_rover_image {
             export rover="${rover_base}:${tag}"
             tag_strategy="local-"
             ;;
+        "volkerwessels")
+            registry="VolkerWessels/"
+            tag=${versionTerraform}-${tag_date_preview}
+            rover_base="${registry}rover-vw"
+            export rover="${rover_base}:${tag}"
+            tag_strategy="preview-vw"
+            ;;
     esac
 
     echo "Creating version ${rover}"

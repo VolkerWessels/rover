@@ -30,7 +30,7 @@ jobs:
       run: |
         set -e
         # Build the rover base image
-        make dev
+        make volkerwessels
 
     # - name: Create Release
     #   id: create_release
