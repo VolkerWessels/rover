@@ -92,11 +92,11 @@ function build_base_rover_image {
             tag_strategy="local-"
             ;;
         "volkerwessels")
-            registry="VolkerWessels/"
+            registry="ghcr.io/volkerwessels/"
             tag=${versionTerraform}-${tag_date_preview}
-            rover_base="${registry}rover-vw"
+            rover_base="${registry}rover"
             export rover="${rover_base}:${tag}"
-            tag_strategy="preview-vw"
+            tag_strategy=""
             ;;
     esac
 
