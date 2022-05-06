@@ -654,10 +654,6 @@ function other {
 
 function get_storage_id {
     echo "@calling get_storage_id"
-    id=$(execute_with_backoff az storage account list \
-        --subscription ${TF_VAR_tfstate_subscription_id} \
-        --query "[?((tags.caf_tfstate=='${TF_VAR_level}' && tags.caf_environment=='${TF_VAR_environment}') || (tags.tfstate=='${TF_VAR_level}' && tags.environment=='${TF_VAR_environment}'))].{id:id}[0]" -o json | jq -r .id)
-
     id=$(az graph query -q "Resources | where type == 'microsoft.storage/storageaccounts' and ((tags.environment == '${TF_VAR_environment}' and tags.tfstate == '${TF_VAR_level}') or (tags.caf_environment == '${TF_VAR_environment}' and tags.caf_tfstate == '${TF_VAR_level}'))  | project id" --query "data[0].id" -o tsv --subscriptions ${TF_VAR_tfstate_subscription_id})
 
     if [[ -z ${id} ]] && [ "${caf_command}" != "launchpad" ]; then
