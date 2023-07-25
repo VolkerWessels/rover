@@ -15,3 +15,6 @@ ci:
 
 alpha:
 	@bash "$(CURDIR)/scripts/build_image.sh" "alpha"
+
+volkerwessels:
+	@bash "$(CURDIR)/scripts/build_image.sh" "volkerwessels"
